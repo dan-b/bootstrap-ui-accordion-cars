@@ -1,0 +1,29 @@
+body {
+    background: #FEFEFE;
+}
+.col-centered {
+    float: none !important;
+    margin: 0 auto !important;
+}
+.content {
+    margin-top: 50px;
+}
+.accordion-title {
+    margin: 0 auto;
+    /*background: #FFE87C;*/
+    display: table;
+    padding: 5px 10px;
+    color: #362C36;
+}
+.car-acc-body {
+    font-size: 3em;
+}
+.car-accordion a.list-group-item {
+    cursor: pointer !important;
+}
+.clear-comment {
+    margin-top: 1em;
+}
+.selected-car-info pre {
+    height: 200px;
+}

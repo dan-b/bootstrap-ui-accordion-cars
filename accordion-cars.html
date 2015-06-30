@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="content">
+    <div class="col-lg-6 col-centered">
+        <div ng-app="ui.bootstrap.demo">
+            <div ng-controller="Cars">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="accordion-title">Cars</h2>
+                        <h4>
+                            <ol class="breadcrumb">
+                                <li ng-show="selection.make.isSet">{{selection.make.value.name}}</li>
+                                <li ng-show="selection.category.isSet">{{selection.category.value.name}}</li>
+                                <li ng-show="selection.model.isSet">{{selection.model.value}}</li>
+                                <li ng-show="selection.comment.isSet">{{selection.comment.value}}</li>
+                            </ol>
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <accordion class="car-accordion" close-others="oneAtATime" ng-init="">
+                            <accordion-group class="acc-group-make" heading="Make" is-open="selection.make.isOpen">
+                                <a class="list-group-item {{make.name==selection.make.value.name?'active':''}}" ng-repeat="make in sampleData.makes" ng-click="setSelection('make', make)">{{make.name}}</a>
+                            </accordion-group>
+                            <accordion-group class="acc-group-model" heading="Category" is-open="selection.category.isOpen" is-disabled="!selection.make.isSet">
+                                <a class="list-group-item {{category.name==selection.category.value.name?'active':''}}" ng-repeat="category in selection.make.value.category" ng-click="setSelection('category', category)">{{category.name}}</a>
+                            </accordion-group>
+                            <accordion-group class="acc-group-year" heading="Model" is-open="selection.model.isOpen" is-disabled="!selection.category.isSet">
+                                <a class="list-group-item {{model==selection.model.value?'active':''}}" ng-repeat="model in selection.category.value.model" ng-click="setSelection('model', model)">{{model}}</a>
+                            </accordion-group>
+                            <accordion-group class="acc-group-comment" heading="Comment" is-open="selection.comment.isOpen" is-disabled="!selection.model.isSet">
+                                <textarea class="form-control" ng-model="selection.comment.value" rows="3">{{selection.comment}}</textarea>
+                                <button class="btn btn-default clear-comment" ng-click="setSelection('comment', null)">Clear
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </accordion-group>
+                        </accordion>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="accordion-cars.css">
+<script src="accordion-cars.js"></script>
+</body>
+</html>
